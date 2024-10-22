@@ -1,8 +1,9 @@
 import pygame
+import grid
 
 # pygame setup
 pygame.init()
-screen = pygame.display.set_mode((320, 540))
+screen = pygame.display.set_mode((640, 720))
 clock = pygame.time.Clock()
 running = True
 
@@ -15,11 +16,8 @@ while running:
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("white")
-
-    # RENDER YOUR GAME HERE
-    color = (0,0,0)
-    pygame.draw.rect(screen, color, pygame.Rect(20, 20, 280, 500),  2)
-
+    # Passes in screen to draw grid 
+    grid.drawGrid(screen)
     # flip() the display to put your work on screen
     pygame.display.flip()
 
