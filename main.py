@@ -1,11 +1,17 @@
 import pygame
-import grid
+from grid import Grid
 
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((640, 720))
+pygame.display.set_caption("AI Tetris Board")
 clock = pygame.time.Clock()
-running = True
+grey = (211,211,211)
+running = True 
+
+#Grid Setup 
+tetris_grid = Grid()
+tetris_grid.print_grid()
 
 while running:
     # poll for events
@@ -14,13 +20,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("white")
-    # Passes in screen to draw grid 
-    grid.drawGrid(screen)
-    # flip() the display to put your work on screen
-    pygame.display.flip()
+    screen.fill(grey)
+    tetris_grid.draw(screen)
 
+    pygame.display.update()
     clock.tick(60)  # limits FPS to 60
 
 pygame.quit()
